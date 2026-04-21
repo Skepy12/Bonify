@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Models\Business;
+use App\Models\BusinessProfile;
 use App\Policies\BusinessPolicy;
 use Carbon\CarbonImmutable;
 use Illuminate\Support\Facades\Date;
@@ -28,7 +28,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->configureDefaults();
 
-        Gate::policy(Business::class, BusinessPolicy::class);
+        Gate::policy(BusinessProfile::class, BusinessPolicy::class);
     }
 
     /**

@@ -8,16 +8,11 @@ import {
     edit,
     index as businessesIndex,
 } from '@/routes/businesses';
-
-type Business = {
-    id: number;
-    name: string;
-    description: string | null;
-};
+import type { BusinessSummary } from '@/types/business';
 
 type Props = {
     businesses: {
-        data: Business[];
+        data: BusinessSummary[];
     };
 };
 
@@ -74,6 +69,12 @@ defineOptions({
                 class="rounded-xl border border-sidebar-border/70 p-4 dark:border-sidebar-border"
             >
                 <h2 class="font-medium">{{ business.name }}</h2>
+                <p class="mt-1 text-xs text-muted-foreground">
+                    Mode: {{ business.service_mode }}
+                    <span v-if="business.country">
+                        · {{ business.country.name }}</span
+                    >
+                </p>
                 <p
                     v-if="business.description"
                     class="mt-2 line-clamp-3 text-sm text-muted-foreground"
